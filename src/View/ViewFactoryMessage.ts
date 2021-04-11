@@ -6,9 +6,9 @@ import ViewError from './ViewError';
 import ViewBuy from './ViewBuy';
 import ViewBattle from './ViewBattle';
 import ViewStart from './ViewStart';
+import ViewProfile from './ViewProfile';
 
 class ViewFactoryMessage {
-
     /** 
      * @param message Mensagem do discord em objeto
      * @param content O que será mostrado ao usuário
@@ -71,6 +71,15 @@ class ViewFactoryMessage {
      */
     public getViewStart(message : Message, content : any) : ViewStart{
         return new ViewStart(message, content);
+    }
+
+    /**
+     * @param message 
+     * @param content 
+     * @returns 
+     */
+    getViewProfile(message : Message, content : any) {
+        return new ViewProfile(message, content);
     }
 
 }

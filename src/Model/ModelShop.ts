@@ -55,8 +55,9 @@ class Shop extends ModelBase {
      init() {
         return this.sequelize.define<Model>('shop', {
             idshop: {
-                type: 'SERIAL',
-                primaryKey: true
+                type: DataTypes.INTEGER,
+                primaryKey: true,
+                autoIncrement: true,
             },
             name: {
                 type: DataTypes.STRING,

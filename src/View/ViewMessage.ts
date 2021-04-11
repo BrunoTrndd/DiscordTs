@@ -10,6 +10,10 @@ abstract class ViewMessage {
         this.response = response;
     }
 
+    /**
+     * Irá utilizar a mensagem que foi passada como parâmetro no construtor
+     * para responder o usuário com a mensagem definida pela view concreta
+     */
     public abstract print() : void;
 
 }

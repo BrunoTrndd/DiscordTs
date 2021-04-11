@@ -53,8 +53,9 @@ class ModelItemShop extends ModelBase{
     init() {
         return this.sequelize.define<Model>('itemshop', {
             iditem : {                         
-                type         : 'SERIAL', 
-                primaryKey   : true
+                type         : DataTypes.INTEGER, 
+                primaryKey   : true,
+                autoIncrement: true,
             },
             idshop : {
                 type         : DataTypes.INTEGER

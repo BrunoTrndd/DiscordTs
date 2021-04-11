@@ -17,7 +17,9 @@ class ModelItem extends ModelBase {
     async addRecord(info: any) : Promise<any>{
         return await this.item.upsert({
             name: info.name,
-            description: info.desc
+            description: info.description,
+            type : info.type,
+            value : info.value
         })
     }
 
@@ -45,14 +47,21 @@ class ModelItem extends ModelBase {
     init() {
         return this.sequelize.define<Model>('item', {
             iditem : {
-                type         : 'SERIAL',
-                primaryKey   : true
+                type         : DataTypes.INTEGER,
+                primaryKey   : true,
+                autoIncrement: true,
             },
             name        : {
                 type : DataTypes.STRING
             },
             description : {
                 type : DataTypes.STRING
+            },
+            type : {
+                type : DataTypes.INTEGER
+            },
+            value : {
+                type : DataTypes.INTEGER
             }
         }, 
         {

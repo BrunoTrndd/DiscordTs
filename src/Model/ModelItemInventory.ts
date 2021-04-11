@@ -18,6 +18,9 @@ class ModelItemInventory extends ModelBase {
     };
      */
     async addRecord(info: any): Promise<any> {
+        
+        console.log(info);
+        
         let itemInventory = await this.itemInventory.findOne({
             where: {idplayer: info.idplayer, iditem: info.iditem}
         });
@@ -28,8 +31,8 @@ class ModelItemInventory extends ModelBase {
         }
     
         return await this.getModel().upsert({
-            idplayer: info.player.idplayer,
-            iditem  : info.item.iditem,
+            idplayer: info.idplayer,
+            iditem  : info.iditem,
             amount  : info.amount,
         });
     }
@@ -94,7 +97,7 @@ class ModelItemInventory extends ModelBase {
     };
 
     async getMoneyFromPlayer(idPlayer : string) {
-        let item = await new ModelItem().getRecordByDescription('Copper');
+        let item = await new ModelItem().getRecordByDescription('Cobre');
         return await this.getModel().findOne({
             where: {
                 idplayer: idPlayer,

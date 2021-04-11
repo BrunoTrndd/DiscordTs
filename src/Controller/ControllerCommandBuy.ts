@@ -20,11 +20,18 @@ class ControllerCommandBuy extends ControllerCommand {
         this.itemShop = new ModelItemShop();
     }
 
-
+    /**
+     * @inheritdoc
+     */
     getDescription(): string {
         return 'Compra itens da loja da cidade onde o jogador está localizado.'
     }
 
+    /**
+     * Compra o item, busca o tem em alguma loja, se tiver, busca o valor e faz o calculo do dinheiro, subtrai do inventario do jogador e adiciona o(s) item(ns)
+     * @param args [Message, ['nomeItem', 'quantidade']]
+     * @returns null
+     */
     async execute(...args: any): Promise<void> {
         let item  = await this.item.getRecordByDescription(args[1][0]);
         if(!item) {

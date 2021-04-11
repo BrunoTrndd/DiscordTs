@@ -45,8 +45,9 @@ class ModelMonster extends ModelBase {
     init() {
         return this.sequelize.define('monster',{
             idmonster : {
-                type : 'SERIAL',
+                type : DataTypes.INTEGER,
                 primaryKey : true,
+                autoIncrement: true,
             },
             name : {
                 type : DataTypes.STRING,

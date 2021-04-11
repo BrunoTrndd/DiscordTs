@@ -20,11 +20,18 @@ class ControllerCommandShop extends ControllerCommand {
         this.modelItem     = new ModelItem();
     }
 
-
+    /**
+     * @inheritdoc
+     */
     getDescription(): string {
         return 'Abre a loja'
     }
 
+    /**
+     * Busca a loja e mostra seus itens, a vitrine das lojas, se não for informado um nome de loja, será mostrada a loja inicial
+     * @param args 
+     * @returns null
+     */
     async execute(...args: any): Promise<void> {
         let shopName = args[1].length > 0 ? args[1] : 'Loja Inicial';
         let shop = await this.modelShop.getRecordByDescription(shopName);

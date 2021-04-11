@@ -26,7 +26,12 @@ class ModelPlayer extends ModelBase {
      * @inheritdoc
      */
     async getRecord(info: any): Promise<any> {
-        return await this.player.findByPk(info.idplayer)
+        return await this.player.findOne({
+            where : {
+                idplayer : info.idplayer
+            }
+        }
+        );
     }
     
     /**
@@ -55,11 +60,11 @@ class ModelPlayer extends ModelBase {
             },
             maxhp : {
                 type : DataTypes.INTEGER,
-                defaultValue : 0,
+                defaultValue : 10,
             },
             currenthp : {
                 type : DataTypes.INTEGER,
-                defaultValue : 0,
+                defaultValue : 10,
             },
             level : {
                 type : DataTypes.INTEGER,

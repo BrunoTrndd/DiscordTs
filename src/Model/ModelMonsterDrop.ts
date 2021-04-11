@@ -5,6 +5,13 @@ class ModelMonsterDrop extends ModelBase {
 
     private monsterDrop;
 
+
+    constructor() {
+        super();
+        this.monsterDrop = this.init();
+    }
+
+
     /**
      * @inheritdoc
      */
@@ -12,7 +19,8 @@ class ModelMonsterDrop extends ModelBase {
         return await this.monsterDrop.upsert({
             idmonster : info.idmonster,
             iditem : info.iditem,
-            chance : info.chance
+            chance : info.chance,
+            amount : info.amount
         });
     }
     
@@ -26,6 +34,14 @@ class ModelMonsterDrop extends ModelBase {
                 iditem    : info.iditem
             }
         });
+    }
+
+    async getAllFromMonster(info : any) : Promise<any> {
+        return await this.monsterDrop.findAll({
+            where : {
+                idmonster : info.idmonster
+            }
+        })
     }
 
     /**
@@ -44,10 +60,13 @@ class ModelMonsterDrop extends ModelBase {
                 type : DataTypes.INTEGER
             },
             iditem : {
-                type : DataTypes.INTEGER,
+                type : DataTypes.INTEGER
             },
             chance : {
                 type : DataTypes.DECIMAL
+            },
+            amount : {
+                type : DataTypes.INTEGER
             }
         }, 
         {

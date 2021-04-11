@@ -11,7 +11,7 @@ export abstract class ControllerCommand {
     protected factoryMessage : ViewFactoryMessage;
 
     /**
-     * Recebendo a mensagem é possível analisar seu conteúdo, canal, quem mandou e hora;
+     * Recebendo a mensagem é possível analisar seu conteúdo, canal, quem mandou, hora, etc...;
      * @param message 
      */
     constructor(message: Message) {
@@ -30,6 +30,5 @@ export abstract class ControllerCommand {
      * @param args Mensagem em texto e seus parametros
      */
     abstract execute(...args : any) : void;
-
 
 }

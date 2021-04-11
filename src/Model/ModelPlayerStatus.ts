@@ -1,14 +1,17 @@
-import { DataTypes, Model } from "sequelize";
-import ModelBase from "./ModelBase";
+import { DataTypes, Model } from "sequelize"; 
+import ModelBaseStatus from "./ModelBaseStatus";
 
-class ModelPlayerStatus extends ModelBase {
-
+class ModelPlayerStatus extends ModelBaseStatus {
+    
     private playerStatus;
     
 
-    constructor() {
-        super()
+    constructor(info : any) {
+        super();
         this.playerStatus = this.init();
+        if(info) {
+            this.status = this.prepareModel(info);
+        }
     }
     
     /**
@@ -25,6 +28,7 @@ class ModelPlayerStatus extends ModelBase {
             attack : info.attack,
             accuracy : info.accuracy,
             magic: info.magic,
+            vitality: info.vitality,
             defense: info.defense,
             magicdefense: info.magicdefense
         });
@@ -40,18 +44,12 @@ class ModelPlayerStatus extends ModelBase {
             }
         });
     }
-    
+
     /**
      * @inheritdoc
      */
-    async getRecordByDescription(desc: string): Promise<any> {
-        // return await this.playerStatus.findOne({
-        //     where : {
-        //         name : desc
-        //     }
-        // });
-    }
-
+    async getRecordByDescription(info: any) {}
+    
     /**
      * @inheritdoc
      */
@@ -64,42 +62,57 @@ class ModelPlayerStatus extends ModelBase {
             strenght: {
                 type: DataTypes.INTEGER,
                 allowNull : false,
+                defaultValue: 3,
             },
             agility: {
                 type: DataTypes.INTEGER,
                 allowNull : false,
+                defaultValue: 1,
             },
             dexterity: {
                 type: DataTypes.INTEGER,
                 allowNull : false,
+                defaultValue: 1,
             },
             intelligence: {
                 type: DataTypes.INTEGER,
                 allowNull : false,
+                defaultValue: 1,
             },
             aspd : {
                 type: DataTypes.INTEGER,
                 allowNull : false,
+                defaultValue: 1,
             },
             attack : {
                 type: DataTypes.INTEGER,
                 allowNull : false,
+                defaultValue: 1,
             },
             accuracy : {
                 type: DataTypes.INTEGER,
                 allowNull : false,
+                defaultValue: 1,
             },
             magic: {
                 type: DataTypes.INTEGER,
                 allowNull : false,
+                defaultValue: 1,
+            },
+            vitality: {
+                type: DataTypes.INTEGER,
+                allowNull : false,
+                defaultValue: 1,
             },
             defense: {
                 type: DataTypes.INTEGER,
                 allowNull : false,
+                defaultValue: 1,
             },
             magicdefense: {
                 type: DataTypes.INTEGER,
                 allowNull : false,
+                defaultValue: 1,
             }
         }, 
         {
@@ -114,6 +127,70 @@ class ModelPlayerStatus extends ModelBase {
     getModel() {
         return this.playerStatus;
     }
+
+    /**
+     * 
+     */
+    calcAttack() {
+        return this.status.strenght;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    calcAgility() {
+        throw new Error("Method not implemented.");
+    }
+
+    /**
+     * @inheritdoc
+     */
+    calcAspd() {
+        throw new Error("Method not implemented.");
+    }
+    
+    /**
+     * @inheritdoc
+     */
+    calcDexterity() {
+        throw new Error("Method not implemented.");
+    }
+
+    /**
+     * @inheritdoc
+     */
+    calcAccuracy() {
+        throw new Error("Method not implemented.");
+    }
+
+    /**
+     * @inheritdoc
+     */
+    calcIntelligence() {
+        throw new Error("Method not implemented.");
+    }
+
+    /**
+     * @inheritdoc
+     */
+    calcMagicAttack() {
+        throw new Error("Method not implemented.");
+    }
+
+    /**
+     * @inheritdoc
+     */
+    calcDefense() {
+        throw new Error("Method not implemented.");
+    }
+
+    /**
+     * @inheritdoc
+     */
+    calcMagicDefense() {
+        throw new Error("Method not implemented.");
+    }
+
 
 }
 

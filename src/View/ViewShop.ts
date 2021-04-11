@@ -4,6 +4,9 @@ import ViewMessage from "./ViewMessage";
 
 class ViewShop extends ViewMessage {
 
+    /**
+     * @inheritdoc
+     */
     public print(): void {
         let message = new MessageEmbed()
             .setTitle(this.response.shopName)

@@ -7,9 +7,8 @@ class ViewPing extends ViewMessage {
      * @inheritdoc
      */
      public print() : void {
-        this.message.reply(`Pong! ${this.message.client.ws.ping}ms`);
+        this.message.reply(`${this.response} ${this.message.client.ws.ping}ms`);
     }
-
 
 }
 

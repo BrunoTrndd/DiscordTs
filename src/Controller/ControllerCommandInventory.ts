@@ -16,7 +16,7 @@ class ControllerCommandInventory extends ControllerCommand {
     }
 
     /**
-     * @inheritdoc
+     * Mostra todos os itens do inventario do player
      */
     async execute(...args: any): Promise<void> {
         let modelItemInventory = new ModelItemInventory();
